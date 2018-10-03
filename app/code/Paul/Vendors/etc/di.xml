@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Create our type VendorsGridDataProvider -->
+    <virtualType name="VendorsGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Paul\Vendors\Model\Resource\Vendors\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">VendorsGridFilterPool</argument> <!-- Define new object for filters -->
+        </arguments>
+    </virtualType>
+
+    <!-- Create our type VendorsGridFilterPool -->
+    <virtualType name="VendorsGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Type for vendors_vendors_listing_data_source -->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="vendors_vendors_listing_data_source" xsi:type="string">Paul\Vendors\Model\ResourceModel\Grid\Vendors\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Simulate our class Paul\Vendors\Model\ResourceModel\Grid\Vendors\Collection -->
+    <virtualType name="Paul\Vendors\Model\ResourceModel\Grid\Vendors\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">paul_vendors</argument>
+            <argument name="resourceModel" xsi:type="string">Paul\Vendors\Model\ResourceModel\Vendors</argument>
+        </arguments>
+    </virtualType>
+</config>
