@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Paul_Vendors::vendor_head" title="Vendors" module="Paul_Vendors" sortOrder="100" resource="Paul_Vendors::vendor_head" />
+        <add id="Paul_Vendors::vendor" title="Vendors" module="Paul_Vendors" sortOrder="20" parent="Paul_Vendors::vendor_head" action="vendors/vendor" resource="Paul_Vendors::vendor" />
+    </menu>
+</config>

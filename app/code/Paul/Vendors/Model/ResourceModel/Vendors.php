@@ -4,7 +4,7 @@ namespace Paul\Vendors\Model\ResourceModel;
 use \Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 /**
- * Department post mysql resource
+ * Vendors post mysql resource
  */
 class Vendors extends AbstractDb
 {

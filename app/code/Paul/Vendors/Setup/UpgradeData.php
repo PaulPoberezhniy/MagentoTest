@@ -41,7 +41,7 @@ class UpgradeData implements UpgradeDataInterface
                 aemulis consarcinantibus insidias graves apud Constantium, cetera medium principem sed
                 siquid auribus eius huius modi quivis infudisset ignotus, acerbum et inplacabilem et in
                 hoc causarum titulo dissimilem sui.',
-                    'date'  => '2016-01-01',
+                    'date_added'  => '2016-01-01',
                     'logo' => '1'
                 ],
                 [
@@ -50,7 +50,7 @@ class UpgradeData implements UpgradeDataInterface
                 venustatis, urbibus decorata magnis et pulchris; in quibus amoenitate celebritateque
                 nominum Tyros excellit, Sidon et Berytus isdemque pares Emissa et Damascus saeculis condita
                 priscis.',
-                    'date'  => '2016-01-01',
+                    'date_added'  => '2016-01-01',
                     'logo' => '1'
                 ],
                 [
@@ -58,13 +58,13 @@ class UpgradeData implements UpgradeDataInterface
                     'description' => 'Duplexque isdem diebus acciderat malum, quod et Theophilum insontem atrox
                 interceperat casus, et Serenianus dignus exsecratione cunctorum, innoxius, modo non reclamante publico vigore,
                 discessit.',
-                    'date'  => '2016-01-01',
+                    'date_added'  => '2016-01-01',
                     'logo' => '1'
                 ]
             ];
 
             /**
-             * Insert departments
+             * Insert vendors
              */
             foreach ($vendors as $data) {
                 $this->_vendors->setData($data)->save();
