@@ -76,59 +76,6 @@
 
         <!-- Filters -->
         <filters name="listing_filters">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="storageConfig" xsi:type="array">
-                        <item name="provider" xsi:type="string">vendors_vendors_listing.vendors_vendors_listing.listing_top.bookmarks</item>
-                        <item name="namespace" xsi:type="string">current.filters</item>
-                    </item>
-                    <item name="childDefaults" xsi:type="array">
-                        <item name="provider" xsi:type="string">vendors_vendors_listing.vendors_vendors_listing.listing_top.listing_filters</item>
-                        <item name="imports" xsi:type="array">
-                            <item name="visible" xsi:type="string">vendors_vendors_listing.vendors_vendors_listing.listing_top.bookmarks:current.columns.${ $.index }.visible</item>
-                        </item>
-                    </item>
-                </item>
-            </argument>
-            <!-- Vendor ID Filter -->
-            <filterRange name="vendors_id">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="dataScope" xsi:type="string">entity_id</item> <!-- Column name in DB -->
-                        <item name="label" xsi:type="string" translate="true">ID</item> <!-- Label on grid -->
-                        <item name="childDefaults" xsi:type="array">
-                            <item name="provider" xsi:type="string">vendors_vendors_listing.vendors_vendors_listing.listing_top.listing_filters</item>
-                        </item>
-                    </item>
-                </argument>
-                <filterInput name="from">
-                    <argument name="data" xsi:type="array">
-                        <item name="config" xsi:type="array">
-                            <item name="dataScope" xsi:type="string">from</item>
-                            <item name="label" xsi:type="string" translate="true">from</item>
-                            <item name="placeholder" xsi:type="string" translate="true">From</item>
-                        </item>
-                    </argument>
-                </filterInput>
-                <filterInput name="to">
-                    <argument name="data" xsi:type="array">
-                        <item name="config" xsi:type="array">
-                            <item name="dataScope" xsi:type="string">to</item>
-                            <item name="label" xsi:type="string" translate="true">to</item>
-                            <item name="placeholder" xsi:type="string" translate="true">To</item>
-                        </item>
-                    </argument>
-                </filterInput>
-            </filterRange>
-            <!-- Vendor name Filter -->
-            <filterInput name="vendors_name">
-                <argument name="data" xsi:type="array">
-                    <item name="config" xsi:type="array">
-                        <item name="dataScope" xsi:type="string">name</item> <!-- Column name in DB -->
-                        <item name="label" xsi:type="string" translate="true">Name</item> <!-- Label on grid -->
-                    </item>
-                </argument>
-            </filterInput>
         </filters>
 
         <!-- Filter Search -->
