@@ -45,10 +45,10 @@ class InstallSchema implements InstallSchemaInterface
                 'comment' => 'Vendor description',
             ),
             'date_added' => array(
-                'type' => Table::TYPE_DATE,
+                'type' => Table::TYPE_TIMESTAMP,
                 'size' => null,
-                'options' => array('nullable' => false),
-                'comment' => 'Vendor date begin',
+                'options' => array('nullable' => false, 'default' => Table::TIMESTAMP_INIT),
+                'comment' => 'Vendor creation Time',
             ),
             'logo' => array(
                 'type' => Table::TYPE_TEXT,

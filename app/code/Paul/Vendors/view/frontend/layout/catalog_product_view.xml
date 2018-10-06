@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<body>
+    <referenceContainer name="product.info.stock.sku">
+        <block class="Paul\Vendors\Block\Product\View\Vendors"
+               name="product.view.vendors"
+               template="Paul_Vendors::product/view/vendors.phtml"
+               after="-">
+        </block>
+    </referenceContainer>
+</body>

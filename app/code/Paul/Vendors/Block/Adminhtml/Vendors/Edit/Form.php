@@ -53,7 +53,7 @@ class Form extends Generic
 
         /** @var \Magento\Framework\Data\Form $form */
         $form = $this->_formFactory->create(
-            ['data' => ['id' => 'edit_form', 'action' => $this->getData('action'), 'method' => 'post']]
+            ['data' => ['id' => 'edit_form', 'action' => $this->getData('action'), 'enctype' => 'multipart/form-data', 'method' => 'post']]
         );
 
         $form->setHtmlIdPrefix('vendors_');
@@ -62,6 +62,8 @@ class Form extends Generic
             'base_fieldset',
             ['legend' => __('General Information'), 'class' => 'fieldset-wide']
         );
+
+        $fieldset->addType('image', '\Paul\Vendors\Block\Adminhtml\Vendors\Helper\Image');
 
         if ($model->getId()) {
             $fieldset->addField('entity_id', 'hidden', ['name' => 'entity_id']);
@@ -77,6 +79,17 @@ class Form extends Generic
             'description',
             'textarea',
             ['name' => 'description', 'label' => __('Vendors Description'), 'title' => __('Vendors Description'), 'required' => true]
+        );
+
+        $fieldset->addField(
+            'logo',
+            'image',
+            [
+                'title' => __('Vendors logo'),
+                'label' => __('Vendors logo'),
+                'name' => 'logo',
+                'note' => 'Allow image type: jpg, jpeg, gif, png',
+            ]
         );
 
         $form->setValues($model->getData());

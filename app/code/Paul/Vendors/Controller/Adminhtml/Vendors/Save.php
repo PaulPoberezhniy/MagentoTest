@@ -2,6 +2,7 @@
 namespace Paul\Vendors\Controller\Adminhtml\Vendors;
 
 use Magento\Backend\App\Action;
+use Magento\Framework\Exception\LocalizedException as FrameworkException;
 
 class Save extends Action
 {
@@ -9,17 +10,49 @@ class Save extends Action
      * @var \Paul\Vendors\Model\Vendors
      */
     protected $_model;
-
+    protected $uploaderFactory;
+    protected $imageModel;
     /**
      * @param Action\Context $context
      * @param \Paul\Vendors\Model\Vendors $model
+     * @param  \Magento\MediaStorage\Model\File\UploaderFactory $uploaderFactory
+     * @param  \Paul\Vendors\Model\Vendors\Image $imageModel
      */
     public function __construct(
         Action\Context $context,
+        \Magento\MediaStorage\Model\File\UploaderFactory $uploaderFactory,
+        \Paul\Vendors\Model\Vendors\Image $imageModel,
         \Paul\Vendors\Model\Vendors $model
     ) {
         parent::__construct($context);
+        $this->uploaderFactory = $uploaderFactory;
+        $this->imageModel = $imageModel;
         $this->_model = $model;
+    }
+
+    public function uploadFileAndGetName($input, $destinationFolder, $data)
+    {
+        try {
+            if (isset($data[$input]['delete'])) {
+                return '';
+            } else {
+                $uploader = $this->uploaderFactory->create(['fileId' => $input]);
+                $uploader->setAllowRenameFiles(true);
+                $uploader->setFilesDispersion(true);
+                $uploader->setAllowCreateFolders(true);
+                $result = $uploader->save($destinationFolder);
+                return $result['file'];
+            }
+        } catch (\Exception $e) {
+            if ($e->getCode() != \Magento\Framework\File\Uploader::TMP_NAME_EMPTY) {
+                throw new FrameworkException($e->getMessage());
+            } else {
+                if (isset($data[$input]['value'])) {
+                    return $data[$input]['value'];
+                }
+            }
+        }
+        return '';
     }
 
     /**
@@ -49,12 +82,20 @@ class Save extends Action
                 $model->load($id);
             }
 
+            if(isset($data['logo']['value']))
+            {
+                $data['logo'] = $data['logo']['value'];
+            }
+
             $model->setData($data);
 
             $this->_eventManager->dispatch(
                 'vendors_vendors_prepare_save',
                 ['vendors' => $model, 'request' => $this->getRequest()]
             );
+
+            $imageName = $this->uploadFileAndGetName('logo', $this->imageModel->getBaseDir(), $data);
+            $model->setData('logo', $imageName);
 
             try {
                 $model->save();
