@@ -1,3 +1,12 @@
 <?php /* @var $block \Paul\Vendors\Block\Product\View\Vendors */?>
-<?php $_product = $block->getProduct() ?>
-<h4><?php echo 'Vendor: ' . $_product->getAttributeText('my_vendor'); ?></h4>
+<?php $_product = $block->getProduct(); ?>
+<?php
+$image_folder = $this->getUrl('pub/media/paul/vendors/image');
+if ($_product->getCustomAttribute('my_vendor')){
+    $cur_vendor_id = $_product->getCustomAttribute('my_vendor')->getValue();
+    $vendor_logo = $block->getLoadedVendor($cur_vendor_id);
+    if(!empty($vendor_logo['logo'])){
+        $image_path = $image_folder.$vendor_logo['logo'];
+        echo '<img src="'.$image_path.'" width="50px" height="50px" alt="logo"/>';
+    }
+} ?>
