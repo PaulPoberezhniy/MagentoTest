@@ -1,4 +1,5 @@
 <?php
+
 namespace Paul\Vendors\Controller\Adminhtml\Vendors;
 
 use Magento\Backend\App\Action;
@@ -17,7 +18,8 @@ class NewAction extends Action
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Backend\Model\View\Result\ForwardFactory $resultForwardFactory
-    ) {
+    )
+    {
         $this->_resultForwardFactory = $resultForwardFactory;
         parent::__construct($context);
     }

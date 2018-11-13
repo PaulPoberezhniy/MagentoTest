@@ -1,4 +1,5 @@
 <?php
+
 namespace Paul\Vendors\Block\Adminhtml\Vendors\Edit;
 
 use \Magento\Backend\Block\Widget\Form\Generic;
@@ -24,7 +25,8 @@ class Form extends Generic
         \Magento\Framework\Data\FormFactory $formFactory,
         \Magento\Store\Model\System\Store $systemStore,
         array $data = []
-    ) {
+    )
+    {
         $this->_systemStore = $systemStore;
         parent::__construct($context, $registry, $formFactory, $data);
     }

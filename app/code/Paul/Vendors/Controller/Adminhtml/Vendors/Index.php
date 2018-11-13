@@ -1,4 +1,5 @@
 <?php
+
 namespace Paul\Vendors\Controller\Adminhtml\Vendors;
 
 use Magento\Backend\App\Action\Context;
@@ -21,7 +22,8 @@ class Index extends Action
     public function __construct(
         Context $context,
         PageFactory $resultPageFactory
-    ) {
+    )
+    {
         parent::__construct($context);
         $this->resultPageFactory = $resultPageFactory;
     }

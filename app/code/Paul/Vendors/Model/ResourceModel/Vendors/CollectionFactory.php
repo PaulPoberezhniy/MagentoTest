@@ -1,4 +1,5 @@
 <?php
+
 namespace Paul\Vendors\Model\ResourceModel\Vendors;
 
 class CollectionFactory

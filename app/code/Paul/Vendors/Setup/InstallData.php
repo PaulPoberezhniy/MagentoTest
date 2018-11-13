@@ -13,13 +13,16 @@ class InstallData implements InstallDataInterface
      * @var \Magento\Eav\Setup\EavSetupFactory
      */
     private $eavSetupFactory;
+
     /**
      * InstallData constructor.
      * @param \Magento\Eav\Setup\EavSetupFactory $eavSetupFactory
      */
-    public function __construct(\Magento\Eav\Setup\EavSetupFactory $eavSetupFactory) {
+    public function __construct(\Magento\Eav\Setup\EavSetupFactory $eavSetupFactory)
+    {
         $this->eavSetupFactory = $eavSetupFactory;
     }
+
     /**
      * @param ModuleDataSetupInterface $setup
      * @param ModuleContextInterface $context

@@ -1,4 +1,5 @@
 <?php
+
 namespace Paul\Vendors\Controller\Adminhtml\Vendors;
 
 use Magento\Backend\App\Action;
@@ -14,7 +15,8 @@ class Delete extends Action
     public function __construct(
         Action\Context $context,
         \Paul\Vendors\Model\Vendors $model
-    ) {
+    )
+    {
         parent::__construct($context);
         $this->_model = $model;
     }

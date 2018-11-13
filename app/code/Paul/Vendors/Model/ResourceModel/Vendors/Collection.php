@@ -1,4 +1,5 @@
 <?php
+
 namespace Paul\Vendors\Model\ResourceModel\Vendors;
 
 use \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;

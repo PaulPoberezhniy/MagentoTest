@@ -1,8 +1,4 @@
 <?php
-/**
- * Copyright © 2015 Magento. All rights reserved.
- * See COPYING.txt for license details.
- */
 
 namespace Paul\Vendors\Setup;
 
@@ -19,8 +15,9 @@ class UpgradeData implements UpgradeDataInterface
 
     protected $_vendors;
 
-    public function __construct(Vendors $vendors){
-        $this->_vendors= $vendors;
+    public function __construct(Vendors $vendors)
+    {
+        $this->_vendors = $vendors;
     }
 
     /**

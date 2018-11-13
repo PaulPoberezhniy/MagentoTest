@@ -58,12 +58,10 @@ class InstallSchema implements InstallSchemaInterface
             ),
         );
 
-        $indexes =  array(
-            // No index for this table
+        $indexes = array(// No index for this table
         );
 
-        $foreignKeys = array(
-            // No foreign keys for this table
+        $foreignKeys = array(// No foreign keys for this table
         );
 
         /**
@@ -74,7 +72,7 @@ class InstallSchema implements InstallSchemaInterface
         $table = $installer->getConnection()->newTable($tableName);
 
         // Columns creation
-        foreach($columns AS $name => $values){
+        foreach ($columns AS $name => $values) {
             $table->addColumn(
                 $name,
                 $values['type'],
@@ -85,7 +83,7 @@ class InstallSchema implements InstallSchemaInterface
         }
 
         // Indexes creation
-        foreach($indexes AS $index){
+        foreach ($indexes AS $index) {
             $table->addIndex(
                 $installer->getIdxName($tableName, array($index)),
                 array($index)
@@ -93,7 +91,7 @@ class InstallSchema implements InstallSchemaInterface
         }
 
         // Foreign keys creation
-        foreach($foreignKeys AS $column => $foreignKey){
+        foreach ($foreignKeys AS $column => $foreignKey) {
             $table->addForeignKey(
                 $installer->getFkName($tableName, $column, $foreignKey['ref_table'], $foreignKey['ref_column']),
                 $column,

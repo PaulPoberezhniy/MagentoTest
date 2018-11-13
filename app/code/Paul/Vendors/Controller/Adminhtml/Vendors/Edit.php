@@ -1,4 +1,5 @@
 <?php
+
 namespace Paul\Vendors\Controller\Adminhtml\Vendors;
 
 use Magento\Backend\App\Action;
@@ -33,7 +34,8 @@ class Edit extends Action
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
         \Magento\Framework\Registry $registry,
         \Paul\Vendors\Model\Vendors $model
-    ) {
+    )
+    {
         $this->_resultPageFactory = $resultPageFactory;
         $this->_coreRegistry = $registry;
         $this->_model = $model;

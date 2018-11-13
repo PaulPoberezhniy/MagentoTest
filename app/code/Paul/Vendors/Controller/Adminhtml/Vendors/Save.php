@@ -1,4 +1,5 @@
 <?php
+
 namespace Paul\Vendors\Controller\Adminhtml\Vendors;
 
 use Magento\Backend\App\Action;
@@ -12,6 +13,7 @@ class Save extends Action
     protected $_model;
     protected $uploaderFactory;
     protected $imageModel;
+
     /**
      * @param Action\Context $context
      * @param \Paul\Vendors\Model\Vendors $model
@@ -23,7 +25,8 @@ class Save extends Action
         \Magento\MediaStorage\Model\File\UploaderFactory $uploaderFactory,
         \Paul\Vendors\Model\Vendors\Image $imageModel,
         \Paul\Vendors\Model\Vendors $model
-    ) {
+    )
+    {
         parent::__construct($context);
         $this->uploaderFactory = $uploaderFactory;
         $this->imageModel = $imageModel;
@@ -82,8 +85,7 @@ class Save extends Action
                 $model->load($id);
             }
 
-            if(isset($data['logo']['value']))
-            {
+            if (isset($data['logo']['value'])) {
                 $data['logo'] = $data['logo']['value'];
             }
 

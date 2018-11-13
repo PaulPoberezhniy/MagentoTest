@@ -1,4 +1,5 @@
-<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <!-- Integration -->
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
@@ -15,7 +16,8 @@
                 <item name="name" xsi:type="string">add</item>
                 <item name="label" xsi:type="string" translate="true">Add New Vendor</item>
                 <item name="class" xsi:type="string">primary</item>
-                <item name="url" xsi:type="string">*/*/new</item> <!-- magento will translate it by vendors/vendors/new -->
+                <item name="url" xsi:type="string">*/*/new
+                </item> <!-- magento will translate it by vendors/vendors/new -->
             </item>
         </item>
     </argument>
@@ -23,7 +25,8 @@
     <dataSource name="vendors_vendors_listing_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
             <argument name="class" xsi:type="string">VendorsGridDataProvider</argument> <!-- Data provider class -->
-            <argument name="name" xsi:type="string">vendors_vendors_listing_data_source</argument> <!-- provider defined above -->
+            <argument name="name" xsi:type="string">vendors_vendors_listing_data_source
+            </argument> <!-- provider defined above -->
             <argument name="primaryFieldName" xsi:type="string">entity_id</argument> <!-- Primary key -->
             <argument name="requestFieldName" xsi:type="string">id</argument> <!-- URL name parameter -->
 
@@ -66,7 +69,9 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="columnsData" xsi:type="array">
-                        <item name="provider" xsi:type="string">vendors_vendors_listing.vendors_vendors_listing.vendors_vendors_columns</item>
+                        <item name="provider" xsi:type="string">
+                            vendors_vendors_listing.vendors_vendors_listing.vendors_vendors_columns
+                        </item>
                     </item>
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/controls/columns</item>
                     <item name="displayArea" xsi:type="string">dataGridActions</item>
@@ -82,10 +87,16 @@
         <filterSearch name="fulltext">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="provider" xsi:type="string">vendors_vendors_listing.vendors_vendors_listing_data_source</item>
-                    <item name="chipsProvider" xsi:type="string">vendors_vendors_listing.vendors_vendors_listing.listing_top.listing_filters_chips</item>
+                    <item name="provider" xsi:type="string">
+                        vendors_vendors_listing.vendors_vendors_listing_data_source
+                    </item>
+                    <item name="chipsProvider" xsi:type="string">
+                        vendors_vendors_listing.vendors_vendors_listing.listing_top.listing_filters_chips
+                    </item>
                     <item name="storageConfig" xsi:type="array">
-                        <item name="provider" xsi:type="string">vendors_vendors_listing.vendors_vendors_listing.listing_top.bookmarks</item>
+                        <item name="provider" xsi:type="string">
+                            vendors_vendors_listing.vendors_vendors_listing.listing_top.bookmarks
+                        </item>
                         <item name="namespace" xsi:type="string">current.search</item>
                     </item>
                 </item>
@@ -96,7 +107,9 @@
         <massaction name="listing_massaction">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="selectProvider" xsi:type="string">vendors_vendors_listing.vendors_vendors_listing.vendors_vendors_columns.ids</item>
+                    <item name="selectProvider" xsi:type="string">
+                        vendors_vendors_listing.vendors_vendors_listing.vendors_vendors_columns.ids
+                    </item>
                     <item name="indexField" xsi:type="string">entity_id</item>
                 </item>
             </argument>
@@ -108,7 +121,9 @@
                         <item name="url" xsi:type="url" path="vendors/vendors/massDelete"/>
                         <item name="confirm" xsi:type="array">
                             <item name="title" xsi:type="string" translate="true">Delete items</item>
-                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected items?</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete
+                                selected items?
+                            </item>
                         </item>
                     </item>
                 </argument>
@@ -120,10 +135,14 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="storageConfig" xsi:type="array">
-                        <item name="provider" xsi:type="string">vendors_vendors_listing.vendors_vendors_listing.listing_top.bookmarks</item>
+                        <item name="provider" xsi:type="string">
+                            vendors_vendors_listing.vendors_vendors_listing.listing_top.bookmarks
+                        </item>
                         <item name="namespace" xsi:type="string">current.paging</item>
                     </item>
-                    <item name="selectProvider" xsi:type="string">vendors_vendors_listing.vendors_vendors_listing.vendors_vendors_columns.ids</item>
+                    <item name="selectProvider" xsi:type="string">
+                        vendors_vendors_listing.vendors_vendors_listing.vendors_vendors_columns.ids
+                    </item>
                     <item name="displayArea" xsi:type="string">bottom</item>
                 </item>
             </argument>
@@ -137,14 +156,18 @@
             <item name="config" xsi:type="array">
                 <!-- Bookmarks behaviour -->
                 <item name="storageConfig" xsi:type="array">
-                    <item name="provider" xsi:type="string">vendors_vendors_listing.vendors_vendors_listing.listing_top.bookmarks</item>
+                    <item name="provider" xsi:type="string">
+                        vendors_vendors_listing.vendors_vendors_listing.listing_top.bookmarks
+                    </item>
                     <item name="namespace" xsi:type="string">current</item>
                 </item>
                 <item name="childDefaults" xsi:type="array">
                     <item name="controlVisibility" xsi:type="boolean">true</item>
                     <!-- Bookmarks behaviour -->
                     <item name="storageConfig" xsi:type="array">
-                        <item name="provider" xsi:type="string">vendors_vendors_listing.vendors_vendors_listing.listing_top.bookmarks</item>
+                        <item name="provider" xsi:type="string">
+                            vendors_vendors_listing.vendors_vendors_listing.listing_top.bookmarks
+                        </item>
                         <item name="root" xsi:type="string">columns.${ $.index }</item>
                         <item name="namespace" xsi:type="string">current.${ $.storageConfig.root}</item>
                     </item>

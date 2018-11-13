@@ -1,4 +1,5 @@
 <?php
+
 namespace Paul\Vendors\Model\ResourceModel;
 
 use \Magento\Framework\Model\ResourceModel\Db\AbstractDb;

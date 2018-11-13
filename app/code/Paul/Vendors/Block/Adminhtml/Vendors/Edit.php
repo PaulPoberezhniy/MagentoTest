@@ -1,4 +1,5 @@
 <?php
+
 namespace Paul\Vendors\Block\Adminhtml\Vendors;
 
 use Magento\Backend\Block\Widget\Form\Container;
@@ -21,7 +22,8 @@ class Edit extends Container
         \Magento\Backend\Block\Widget\Context $context,
         \Magento\Framework\Registry $registry,
         array $data = []
-    ) {
+    )
+    {
         $this->_coreRegistry = $registry;
         parent::__construct($context, $data);
     }

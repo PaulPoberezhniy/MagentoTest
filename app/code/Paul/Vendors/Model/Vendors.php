@@ -1,4 +1,5 @@
 <?php
+
 namespace Paul\Vendors\Model;
 
 use \Magento\Framework\Model\AbstractModel;

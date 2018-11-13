@@ -9,15 +9,16 @@ class Vendors extends AbstractProduct
     protected $_vendor;
 
     /**
-     * @param \Magento\Catalog\Block\Product\Context$context
-     * @param \Paul\Vendors\Model\Vendors $vendor,
+     * @param \Magento\Catalog\Block\Product\Context $context
+     * @param \Paul\Vendors\Model\Vendors $vendor ,
      * @param array $data
      */
     public function __construct(
         \Magento\Catalog\Block\Product\Context $context,
         \Paul\Vendors\Model\Vendors $vendor,
         array $data = []
-    ) {
+    )
+    {
         $this->_vendor = $vendor;
 
         parent::__construct(
