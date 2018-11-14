@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Bars\Blog\Api\Data\PostInterface" type="Bars\Blog\Model\Post" />
+    <preference for="Bars\Blog\Api\PostRepositoryInterface" type="Bars\Blog\Model\PostRepository"/>
+    <preference for="Bars\Blog\Api\Data\PostSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
     <virtualType name="BlogGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
         <arguments>
             <argument name="appliers" xsi:type="array">

@@ -3,7 +3,7 @@ namespace Bars\Blog\Controller\Adminhtml\Post;
 
 use Magento\Backend\App\Action;
 
-class Edit extends \Magento\Backend\App\Action
+class Edit extends Action
 {
     /**
      * Core registry
@@ -47,6 +47,7 @@ class Edit extends \Magento\Backend\App\Action
      */
     protected function _initAction()
     {
+        // load layout, set active menu and breadcrumbs
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
         $resultPage->setActiveMenu('Bars_blog::post')

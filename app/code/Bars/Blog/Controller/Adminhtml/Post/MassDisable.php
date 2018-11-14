@@ -3,6 +3,7 @@
 namespace Bars\Blog\Controller\Adminhtml\Post;
 
 use Magento\Backend\App\Action\Context;
+use Bars\Blog\Api\PostRepositoryInterface;
 use Magento\Ui\Component\MassAction\Filter;
 use Bars\Blog\Model\ResourceModel\Post\CollectionFactory;
 use Magento\Framework\Controller\ResultFactory;
@@ -22,15 +23,25 @@ class MassDisable extends \Magento\Backend\App\Action
      */
     protected $collectionFactory;
 
+    /**
+     * @var PostRepositoryInterface
+     */
+    private $postRepository;
 
     /**
      * @param Context $context
      * @param Filter $filter
      * @param CollectionFactory $collectionFactory
      */
-    public function __construct(Context $context, Filter $filter, CollectionFactory $collectionFactory)
+    public function __construct(
+        Context $context,
+        PostRepositoryInterface $postRepository,
+        Filter $filter,
+        CollectionFactory $collectionFactory
+    )
     {
         $this->filter = $filter;
+        $this->postRepository = $postRepository;
         $this->collectionFactory = $collectionFactory;
         parent::__construct($context);
     }
@@ -47,7 +58,7 @@ class MassDisable extends \Magento\Backend\App\Action
 
         foreach ($collection as $item) {
             $item->setIsActive(false);
-            $item->save();
+            $this->postRepository->save($item);
         }
 
         $this->messageManager->addSuccess(__('A total of %1 record(s) have been disabled.', $collection->getSize()));

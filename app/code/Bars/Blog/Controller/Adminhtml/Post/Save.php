@@ -1,17 +1,30 @@
 <?php
+
 namespace Bars\Blog\Controller\Adminhtml\Post;
 
 use Magento\Backend\App\Action;
-use Magento\TestFramework\ErrorLog\Logger;
+use Bars\Blog\Api\PostRepositoryInterface;
+use Magento\Framework\Exception\NoSuchEntityException;
 
-class Save extends \Magento\Backend\App\Action
+class Save extends Action
 {
 
     /**
-     * @param Action\Context $context
+     * @var PostRepositoryInterface
      */
-    public function __construct(Action\Context $context)
+    private $postRepository;
+
+    /**
+     * Save constructor.
+     * @param Action\Context $context
+     * @param PostRepositoryInterface $postRepository
+     */
+    public function __construct(
+        Action\Context $context,
+        PostRepositoryInterface $postRepository
+)
     {
+        $this->postRepository = $postRepository;
         parent::__construct($context);
     }
 
@@ -39,7 +52,15 @@ class Save extends \Magento\Backend\App\Action
 
             $id = $this->getRequest()->getParam('post_id');
             if ($id) {
-                $model->load($id);
+                try {
+                    /** @var PostInterface $model */
+                    $model = $this->postRepository->getById($id);
+                } catch (NoSuchEntityException $e) {
+                    $this->messageManager->addErrorMessage(__($e->getMessage()));
+                    /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
+                    $resultRedirect = $this->resultRedirectFactory->create();
+                    return $resultRedirect->setPath('*/*/');
+                }
             }
 
             $model->setData($data);
@@ -50,7 +71,7 @@ class Save extends \Magento\Backend\App\Action
             );
 
             try {
-                $model->save();
+                $this->postRepository->save($model);
                 $this->messageManager->addSuccess(__('You saved this Post.'));
                 $this->_objectManager->get('Magento\Backend\Model\Session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
